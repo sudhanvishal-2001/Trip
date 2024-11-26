@@ -22,10 +22,16 @@ import { IoTelescope } from "react-icons/io5";
 import { FaLink } from "react-icons/fa6";
 import { FaRegBookmark } from "react-icons/fa";
 import { ImArrowUpRight } from "react-icons/im";
+import { MdKeyboardDoubleArrowRight ,MdClose} from "react-icons/md";
+import { useSpring, animated } from "react-spring";
+
+
+import Carousel  from './Carousel';
 
 export const FirstPage = () => {
   const [activeView, setActiveView] = useState("single");
   const [currentIndexes, setCurrentIndexes] = useState([0, 1, 2]);
+  
 
   const cardDetails = [
     {
@@ -93,6 +99,17 @@ export const FirstPage = () => {
   ];
 
 
+    const [isOpen, setIsOpen] = useState(false);
+  
+    const toggleSidebar = () => {
+      setIsOpen(!isOpen);
+    };
+  
+    const closeSidebar = () => {
+      setIsOpen(false);
+    };
+  
+
   const moveNext = () => {
     setCurrentIndexes((prevIndexes) => {
       const data = activeView === "single" ? cardDetails[0].singlecityview.details : cardDetails[1].multicityview.details;
@@ -152,12 +169,15 @@ export const FirstPage = () => {
           />
         </Card>
 
+        
         <Card className="card2">
+          
           <Card.Img
             variant="top"
             src={viewData[currentIndexes[1]].img}
             alt={viewData[currentIndexes[1]].title}
           />
+          
           <Card.Body>
             <div>
                 <Card.Title className="card-views"><IoTelescope /> {viewData[currentIndexes[1]].views}</Card.Title>
@@ -198,10 +218,35 @@ export const FirstPage = () => {
         </button>
       </div>
 
+        {/* <div className="carousel">
+        <Carousel />
+        </div> */}
+
       <div className="fp-pyt">
             <img src={svgplan} alt="direction" />
             <p>Plan Your Trip</p>
       </div>
+
+
+      <div className={`sidebar ${isOpen ? 'open' : ''}`}>
+        <div className="sidebarcontent">
+          <button className="closebtn" onClick={closeSidebar}>
+            <MdClose />
+          </button>
+          <div className="sidebar-contents">
+            <div>Beaches</div>
+            <div>Deserts</div>
+            <div>Mountains</div>
+            <div>Iconic cities</div>
+          </div>
+        </div>
+      </div>
+
+      <div className={`sidebararrow ${isOpen ? 'hide' : ''}`} onClick={toggleSidebar}>
+        <MdKeyboardDoubleArrowRight className="sidearrowicon" />
+      </div>
+      
+      
     </div>
   );
 };
