@@ -148,7 +148,7 @@
 
 .Stalemate-text {
   font-family: "Stalemate", cursive;
-  font-size: 198.73px;
+  font-size: 220.73px;
   font-weight: 400;
   line-height: 1;
   text-underline-position: from-font;
@@ -193,12 +193,12 @@
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     position: absolute;
-    top: -70px;
-    left: -7.5rem;
+    top: -50px;
+    left: -6.5rem;
 }
   .banner-content {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
