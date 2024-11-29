@@ -15,6 +15,8 @@ import scimg3 from "../img1/scimg3.png";
 import mcv1 from "../img1/mcv1.png";
 import mcv2 from "../img1/mcv2.png";
 import mcv3 from "../img1/mcv3.png";
+import { MdClose, MdKeyboardDoubleArrowRight } from "react-icons/md";
+
 
 import ImageSlider from './ImageSlider';  // Import the new ImageSlider component
 
@@ -88,6 +90,18 @@ export const FirstPage = () => {
     },
   ];
 
+
+  const [isOpen, setIsOpen] = useState(false);
+  
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeSidebar = () => {
+    setIsOpen(false);
+  };
+
+  
   const moveNext = () => {
     setDirection("right"); // Set direction to right
     setCurrentIndexes((prevIndexes) => {
@@ -175,6 +189,27 @@ export const FirstPage = () => {
         <img src={svgplan} alt="direction" />
         <p>Plan Your Trip</p>
       </div>
+
+
+      <div className={`sidebar ${isOpen ? 'open' : ''}`}>
+      <div className="sidebarcontent">
+        <button className="closebtn" onClick={closeSidebar}>
+          <MdClose />
+        </button>
+        <div className="sidebar-contents">
+          <div>Beaches</div>
+          <div>Deserts</div>
+          <div>Mountains</div>
+          <div>Iconic cities</div>
+        </div>
+      </div>
     </div>
+
+    <div className={`sidebararrow ${isOpen ? 'hide' : ''}`} onClick={toggleSidebar}>
+      <MdKeyboardDoubleArrowRight className="sidearrowicon" />
+    </div>
+
+  </div>
+    
   );
 };

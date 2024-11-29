@@ -60,7 +60,43 @@
   
   .back {
     transform: rotateY(180deg); /* Back side of the slide */
+    position: relative; /* Create a stacking context for the overlay */
   }
+  
+  .back img {
+    position: absolute; /* Allow the image to act as a background */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1; /* Set the image layer */
+    border-radius: 2rem; /* Optional: Maintain the same border radius */
+  }
+  
+  .back p {
+    position: relative; /* Position the text over the image */
+    z-index: 2; /* Ensure the text is above the image */
+    margin: 0; /* Remove default margins for the text */
+    padding: 20px; /* Add some padding for better readability */
+    color: white; /* Make text color contrast with the image */
+    font-size: 1rem; /* Adjust the font size */
+    text-align: left; /* Center-align the text */
+  }
+
+  .back_content{
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+    border-radius: 2rem;
+    z-index: 2;
+    background:#2d3e6ca4;
+
+  }
+  
   
   .swiper-slide-hide {
     transition: opacity 0 ease, transform 0 ease;

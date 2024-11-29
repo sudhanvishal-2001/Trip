@@ -1,3 +1,6 @@
+*{
+  margin: 0;
+}
 .fp-bg1{
     position:absolute;
     top: 0vh;
@@ -349,26 +352,29 @@
   top: 15%;
   left: 0;
   height: 80vh;
-  
   overflow: hidden;
   width: 0;
-  transition: width 0.3s ease;
+  transition: width 0.6s cubic-bezier(0.25, 1.25, 0.5, 1.1);
   color: white;
   border-radius: 3rem 3rem 3rem 3rem;
+  
 
 }
 
 .sidebar.open {
-  width: 200px;  /* Adjust the width when the sidebar is open */
-  background-color: rgba(0, 0, 0, 0.466); /* Reduced opacity */
+  width: 200px;  
+  background-color: rgba(0, 0, 0, 0.466); 
+  border-radius: 3rem;
   mask-image: 
   linear-gradient(to bottom, rgba(0, 0, 0, 0.658) 90%, transparent 100%), 
-  linear-gradient(to top, rgb(0, 0, 0) 90%, transparent 100%),   
-  linear-gradient(to left, black 90%, transparent 100%),
-  linear-gradient(to right, black 90%, transparent 100%); 
+  linear-gradient(to top, rgb(0, 0, 0,1) 90%, transparent 100%),   
+  linear-gradient(to left, rgb(0, 0, 0,1) 90%, transparent 100%),
+  linear-gradient(to right,rgb(0, 0, 0,1) 80%, transparent 100%); 
   mask-composite: intersect;
   
 }
+
+
 
 .sidebarcontent {
   display: none;
@@ -384,12 +390,18 @@
   position: absolute;
   top: 45%;
   left: 0;
-  height: 8vh;
-  width: 46px;
-  border-radius: 0px 14px 14px 0px;
+  height: 15vh;
+  width: 5vw;
+  border-radius: 0px 15px 14px 0px;
+  clip-path: polygon(0 0, 34% 20%, 34% 80%, 0% 100%);
   cursor: pointer;
   opacity: 1;
   transition: opacity 0.3s ease, left 0.3s ease;
+}
+
+.sidearrowicon {
+  height: 100%;
+  width: 30%;
 }
 
 .sidebar.open .sidebararrow {
@@ -401,10 +413,7 @@
   display: none;
 }
 
-.sidearrowicon {
-  height: 100%;
-  width: 100%;
-}
+
 
 /* Close button inside sidebar */
 .closebtn {
