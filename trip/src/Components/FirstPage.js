@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "../Styles/FirstPage.css";
-import bg1 from "../img1/page2bg.png";
-import bg2 from "../img1/page2bg2.png";
-import logo from "../img/logo.png";
-import profilelogo from "../img/profilelogo.png";
-import belllogo from "../img/belllogo.png";
+import bg1 from "../Assets/page2bg.svg";
+import bg2 from "../Assets/page2bg2.svg";
+import logo from "../Assets/logo.svg";
+import profilelogo from "../Assets/profilelogo.svg";
+import belllogo from "../Assets/belllogo.svg";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { useSpring, animated } from "react-spring";
-import svgplan from "../img1/svgplan.png";
+import svgplan from "../Assets/svgplan.svg";
 import scimg1 from "../img1/scimg1.png";
 import scimg2 from "../img1/scimg2.png";
 import scimg3 from "../img1/scimg3.png";
@@ -16,6 +16,13 @@ import mcv1 from "../img1/mcv1.png";
 import mcv2 from "../img1/mcv2.png";
 import mcv3 from "../img1/mcv3.png";
 import { MdClose, MdKeyboardDoubleArrowRight } from "react-icons/md";
+import ExpandIcon from "../Assets/expand-icon.svg"
+import MessageIcon from "../Assets/message-icon.svg"
+import SearchIcon from "../Assets/search-icon.svg"
+import StarFallIcon from "../Assets/star-fall-icon.svg"
+import BulbIcon from "../Assets/bulb-icon.svg"
+import CloseIcon from "../Assets/close-icon.svg"
+import { CgProfile } from "react-icons/cg";
 
 
 import ImageSlider from './ImageSlider';  // Import the new ImageSlider component
@@ -146,29 +153,44 @@ export const FirstPage = () => {
 
   const backgroundImage = activeView === "single" ? bg1 : bg2;
 
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleIcons = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <div>
       <div className="fp-bg1">
         <img src={backgroundImage} alt="Background 1" />
       </div>
       <img className="fp-logo" src={logo} alt="Logo" />
-      <img className="fp-profilelogo" src={profilelogo} alt="Profile Logo" />
+      <div className="profilelogo"><CgProfile className='CgProfile'/></div>
+      {/* <img className="fp-profilelogo" src={profilelogo} alt="Profile Logo" /> */}
       <img className="fp-belllogo" src={belllogo} alt="Bell Logo" />
 
-      <div className="toggle-container">
-        <div
-          className={`toggle-button ${activeView === "single" ? "active" : ""}`}
-          onClick={() => setActiveView("single")}
+      <div
+          className="toggle-container"
+          style={{
+            borderColor: activeView === "single" ? "black" : "white",
+          }}
         >
-          Single City View
+          <div
+            className={`toggle-button ${activeView === "single" ? "active" : ""}`}
+            style={{
+              color: activeView === "single" ? "black" : "white",
+            }}
+            onClick={() => setActiveView("single")}
+          >
+            Single City View
+          </div>
+          <div
+            className={`toggle-button ${activeView === "multi" ? "active" : ""}`}
+            onClick={() => setActiveView("multi")}
+          >
+            Multi City View
+          </div>
         </div>
-        <div
-          className={`toggle-button ${activeView === "multi" ? "active" : ""}`}
-          onClick={() => setActiveView("multi")}
-        >
-          Multi City View
-        </div>
-      </div>
 
       <ImageSlider
         viewData={viewData}
@@ -185,10 +207,13 @@ export const FirstPage = () => {
         </button>
       </div>
 
-      <div className="fp-pyt">
-        <img src={svgplan} alt="direction" />
-        <p>Plan Your Trip</p>
-      </div>
+
+        <div className="fp-pyt">
+          <img src={svgplan} alt="direction" />
+          <p>Plan Your Trip</p>
+        </div>
+
+      
 
 
       <div className={`sidebar ${isOpen ? 'open' : ''}`}>
@@ -208,6 +233,31 @@ export const FirstPage = () => {
     <div className={`sidebararrow ${isOpen ? 'hide' : ''}`} onClick={toggleSidebar}>
       <MdKeyboardDoubleArrowRight className="sidearrowicon" />
     </div>
+
+    <div className="icon-container-side">
+      <div className="beforemain">
+        <div className="main-icon" style={{ transform: "translateY(0.6rem)" }}>
+          <img src={SearchIcon} />
+        </div>
+      </div>
+      </div>
+      <div className="icon-container">
+        <div className={`additional-icon icon1 ${isExpanded ? "visible bouncing" : ""}`}  >
+          <img src={BulbIcon} />
+        </div>
+        <div className={`additional-icon  icon2 ${isExpanded ? "visible bouncing" : ""}`}  >
+          <img src={StarFallIcon} />
+        </div>
+        <div className="main-icon " style={{ transform: "translateY(-1rem)" }}>
+          <img src={MessageIcon} />
+        </div>
+        <div className={`main-icon ${isExpanded ? "visible " : ""}`} onClick={toggleIcons}>
+          <img src={ExpandIcon} />
+        </div>
+        <div className={`close-icon  ${isExpanded ? "" : "visible"}`} style={{ transform: "translateY(-3rem)" }} onClick={toggleIcons}>
+          <img src={CloseIcon} />
+        </div>
+      </div>
 
   </div>
     

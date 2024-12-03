@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import bg1 from '../img/bg1.png';
-import bg2 from '../img/bg2.png';
+import bg2 from '../Assets/bg2.svg';
 import bg3 from '../img/bg3.png';
-import logo from '../img/logo.png';
-import profilelogo from '../img/profilelogo.png';
-import belllogo from '../img/belllogo.png';
 import '../Styles/LandingPage.css';
 import { CgProfile } from "react-icons/cg";
+import logo from "../Assets/logo.svg";
+import profilelogo from "../Assets/profilelogo.svg";
+import belllogo from "../Assets/belllogo.svg";
 
 export const LandingPage = () => {
   const [isZoomedBg1, setIsZoomedBg1] = useState(false);

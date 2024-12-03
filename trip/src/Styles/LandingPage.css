@@ -76,11 +76,13 @@
 
 
 .logo{
-    position:absolute;
-    top: 0;
-    left: 1vw;
-    height: 30vh;
-    width: 20vw;
+  position:absolute;
+  width: 15.99vw;
+  height: 10.05vh;
+  top: 1.85vh;
+  left: 1.41vw;
+  padding: 0px 0px 0px 0.034vw;
+  gap: 0vw; /* or 0vh */
 }
 
 .profilelogo{
